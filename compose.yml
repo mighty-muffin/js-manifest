@@ -3,7 +3,7 @@ name: whoami
 
 services:
   whoami:
-    image: traefik/whoami:v1.10.4
+    image: traefik/whoami:v1.11.0
     command:
        # It tells whoami to start listening on 2001 instead of 80
        - --port=2001
