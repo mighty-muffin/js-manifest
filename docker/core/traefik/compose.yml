@@ -19,7 +19,10 @@ services:
     ports:
       - "80:80"
       - "443:443/tcp"
-    env_file: stack.env
+    environment:
+      - CF_API_EMAIL= ${CF_API_EMAIL}
+      - CF_DNS_API_TOKEN= ${CF_DNS_API_TOKEN}
+      - TRAEFIK_DASHBOARD_CREDENTIALS= ${TRAEFIK_DASHBOARD_CREDENTIALS}
     security_opt:
       - no-new-privileges:true
     volumes:
