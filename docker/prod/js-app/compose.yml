@@ -12,7 +12,7 @@ networks: # docker network create external
 services:
   juiceshop:
     container_name: js-app
-    image: docker.io/bkimminich/juice-shop:v17.3.0
+    image: ghcr.io/mighty-muffin/juice-shop:latest
     restart: unless-stopped
     networks:
       - external
