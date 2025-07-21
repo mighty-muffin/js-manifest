@@ -1,0 +1,20 @@
+---
+name: juiceshop
+
+networks: # docker network create external
+  external:
+    name: external
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: external
+    external: true
+
+services:
+  juiceshop:
+    container_name: js-app
+    image: docker.io/bkimminich/juice-shop:v17.3.0
+    restart: unless-stopped
+    networks:
+      - external
+    ports:
+      - 3000:3000
