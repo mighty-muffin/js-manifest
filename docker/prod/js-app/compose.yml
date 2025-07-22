@@ -1,12 +1,12 @@
 ---
 name: juiceshop
 
-networks: # docker network create external
-  external:
-    name: external
+networks: # docker network create proxy
+  proxy:
+    name: proxy
     driver: bridge
     driver_opts:
-      com.docker.network.bridge.name: external
+      com.docker.network.bridge.name: proxy
     external: true
 
 services:
@@ -15,6 +15,11 @@ services:
     image: ghcr.io/mighty-muffin/juice-shop:latest
     restart: unless-stopped
     networks:
-      - external
-    ports:
-      - 3000:3000
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.juiceshop.entrypoints=https"
+      - "traefik.http.routers.juiceshop.rule=Host(`juiceshop.local.mighty-muffin.io`)"
+      - "traefik.http.routers.juiceshop.service=juiceshop"
+      - "traefik.http.routers.juiceshop.tls=true"
+      - "traefik.http.services.juiceshop.loadbalancer.server.port=3000"
