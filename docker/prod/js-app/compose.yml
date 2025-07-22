@@ -12,7 +12,7 @@ networks: # docker network create proxy
 services:
   juiceshop:
     container_name: js-app
-    image: ghcr.io/mighty-muffin/juice-shop:latest
+    image: ghcr.io/mighty-muffin/js-app:latest
     restart: unless-stopped
     networks:
       - proxy
