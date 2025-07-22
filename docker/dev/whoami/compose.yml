@@ -16,6 +16,9 @@ services:
     restart: unless-stopped
     networks:
       - proxy
+    environment:
+      - USERNAME="superuser"
+      - PASSWORD="superuser"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.whoami.entrypoints=https"
