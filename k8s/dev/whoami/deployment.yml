@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whoami
+  namespace: apps
+  labels:
+    app: whoami
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whoami
+  template:
+    metadata:
+      labels:
+        app: whoami
+    spec:
+      containers:
+        - name: whoami
+          image: docker.io/traefik/whoami:v1.10
+          env:
+            - name: USERNAME
+              value: "superuser"
+            - name: PASSWORD
+              value: "superuser"
+          ports:
+            - containerPort: 80
