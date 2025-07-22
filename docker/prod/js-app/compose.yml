@@ -19,7 +19,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.juiceshop.entrypoints=https"
-      - "traefik.http.routers.juiceshop.rule=Host(`juiceshop.local.mighty-muffin.io`)"
+      - "traefik.http.routers.juiceshop.rule=Host(`js.local.mighty-muffin.io`)"
       - "traefik.http.routers.juiceshop.service=juiceshop"
       - "traefik.http.routers.juiceshop.tls=true"
       - "traefik.http.services.juiceshop.loadbalancer.server.port=3000"
